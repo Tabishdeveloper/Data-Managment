@@ -1,4 +1,5 @@
 #include <iostream>
+#include<string>
 #include <conio.h> // For _getch() function
 using namespace std;
 
@@ -10,6 +11,99 @@ void printOptions(int selectedOption) {
     cout << (selectedOption == 2 ? "> " : "  ") << "2. Population\n";
     cout << (selectedOption == 3 ? "> " : "  ") << "3. Agriculture\n";
     cout << (selectedOption == 4 ? "> " : "  ") << "4. Industry\n";
+}
+
+void feedback_formula(int formula){
+                                 cout<<"__________________________________________________________________________________\n";
+                                cout<<"|                                                                                 |\n";
+                                cout<<"| GDP  = private consumption + gross private investment + government investment + |\n";
+                                cout<<"| government spending + (exports - imports).                                      |\n";
+                                cout<<"|_________________________________________________________________________________|\n";
+                                cout<<"Press '1' to check how to use GDP Data : ";
+                                cin>>formula;
+                                if(formula==1){
+                                    string star;
+                                    // GDP data usage...........
+                                    cout<<"__________________________________________________________________________________________________\n";
+                                    cout<<"| In economics, the final users of goods and services are divided into three main groups:         |\n";
+                                    cout<<"|  households, businesses, and the government. One way gross domestic product (GDP) is calculated |\n";
+                                    cout<<"|  known as the expenditure approach—is by adding the expenditures made by those                 |\n";
+                                    cout<<"|  three groups of user. Accordingly, GDP is defined by the following formula:                    |\n";
+                                    cout<<"|                                                                                                 |\n";
+                                    cout<<"|             GDP = Consumption + Investment + Government Spending + Net Exports                  |\n";
+                                    cout<<"|                                                                                                 |\n";
+                                    cout<<"|  where consumption (C) represents private-consumption expenditures by households and            |\n";
+                                    cout<<"|   nonprofit organizations, investment (I) refers to business expenditures                       |\n";
+                                    cout<<"|                                                                                                 |\n";
+                                    cout<<"|                                                                                                 |\n";
+                                    cout<<"|________________________________________________________________________________________________ |\n";
+
+
+                                     cout<<"Thank you for using me\n";
+                                    cout<<"Please give Feedback of my service out of five stars : ";
+
+                                    cin>>star;
+ cout<<"==============================================================================================\n";
+                                    if(star=="*****"){
+                                        cout<<"Thanks Sir\n";
+                                    }
+                                    else if(star=="****"){
+                                        cout<<"Thanks Sir\n";
+                                    }
+                                    else if(star=="***"){
+                                        cout<<"Thanks Sir,I will improve my service\n";
+                                    }
+                                    else if(star=="**"){
+                                        cout<<"Thanks Sir,I will improve my service alot\n";
+                                    }
+                                    else if(star=="*"){
+                                        cout<<"Sorry Sir,I think should improve my service alot\n";
+                                    }
+                                
+
+                                }
+}
+
+void graph(){
+    
+  cout << "35T`|  " << endl;
+  cout << "30T`|        " << endl;
+  cout << "25T`|             ,~~''" << endl;
+  cout << "20T`|      ,~~~~~/" << endl;
+  cout << "15T`| ,~~~/  " << endl;
+  cout << "10T`|/_____________________  "<<endl;
+  cout<<  "   `      `      `   `"<<endl;
+  cout<<  "  1960  1980  2000  2020"<<endl;
+}
+void feedback(){
+    string star;
+
+  cout<<"============================================================================================\n";
+  
+                        
+                                    cout<<"Thank you for using me\n";
+                                    cout<<"Please give Feedback of my service out of five stars : ";
+
+                                    cin>>star;
+ cout<<"==============================================================================================\n";
+                                    if(star=="*****"){
+                                        cout<<"Thanks Sir\n";
+                                    }
+                                    else if(star=="****"){
+                                        cout<<"Thanks Sir\n";
+                                    }
+                                    else if(star=="***"){
+                                        cout<<"Thanks Sir,I will improve my service\n";
+                                    }
+                                    else if(star=="**"){
+                                        cout<<"Thanks Sir,I will improve my service alot\n";
+                                    }
+                                    else if(star=="*"){
+                                        cout<<"Sorry Sir,I think should improve my service alot\n";
+                                    }
+                                
+                            
+
 }
 // STRUCTURE
 struct Country {
@@ -35,11 +129,11 @@ void output(Country_info Country);
 // STRUCTURE
 struct GDP {
     string GDP_value;
-    string GDP_rank;
+    string GDP_growth;
 };
 struct GDP_info {
     string GDP_value;
-    string GDP_rank;
+    string GDP_growth;
 };
 // FUNCTIONS
 void display_GDP( GDP gdp);
@@ -52,6 +146,8 @@ void output_GDP( GDP_info gdp2);
 
 int main() {
     char y_n;
+    int formula;
+    string argument,star;
     char num;
     int country_name;
 
@@ -59,31 +155,31 @@ int main() {
     const int totalOptions = 4;
     int selectedOption = 1;
  //==============================================================================================================================================================//
-    GDP gdp1 = {"23.32 Trillion USD (2021)"};
-    GDP gdp2 = {"1.779 Trillion USD (2021)"};
-    GDP gdp3 = {"17.73 Trillion USD (2021)"};
-    GDP gdp4 = {"1.988 Trillion USD (2021)"};
-    GDP gdp5 = {"1.609 Trillion USD (2021)"};
-    GDP gdp6 = {"1.553 Trillion USD (2021)"};
-    GDP gdp7 = {"3.176 Trillion USD (2021)"};
-    GDP gdp8 = {"487.2 Billion  USD (2021)"};
-    GDP gdp9 = {"197.1 Billion  USD (2021)"};
-    GDP gdp10 = {"163 Billion  USD (2021)"};
-    GDP gdp11 = {"833.5 Billion  USD (2021)"};
-    GDP gdp12 = {"1.273 Trillion  USD (2021)"};
-    GDP gdp13 = {"1.186 Trillion  USD (2021)"};
-    GDP gdp14 = {"419 Billion  USD (2021)"};
-    GDP gdp15 = {"14.79 Billion  USD (2021)"};
-    GDP gdp16 = {"4.941 Trillion  USD (2021)"};
-    GDP gdp17 = {"505.9 Billion  USD (2021)"};
-    GDP gdp18 = {"635.7 Billion  USD (2021)"};
-    GDP gdp19 = {"819 Billion  USD (2021)"};
-    GDP gdp20 = {"404.1 Billion  USD (2021)"};
-    GDP gdp21 = {"1.811 Trillion  USD (2021)"};
-    GDP gdp22 = {"344.134 Billion  USD (2021)"};
-    GDP gdp23 = {"373 Billion  USD (2021)"};
-    GDP gdp24 = {"223.2 Billion  USD (2021)"};
-    GDP gdp25 = {"348.3 Billion  USD (2021)"};
+    GDP gdp1 = {"23.32 Trillion USD (2021)","2.06 %"};
+    GDP gdp2 = {"1.779 Trillion USD (2021)","-2.07 %"};
+    GDP gdp3 = {"17.73 Trillion USD (2021)","2.99 %"};
+    GDP gdp4 = {"1.988 Trillion USD (2021)","3.40 %"};
+    GDP gdp5 = {"1.609 Trillion USD (2021)","2.90 %"};
+    GDP gdp6 = {"1.553 Trillion USD (2021)","3.62 %"};
+    GDP gdp7 = {"3.176 Trillion USD (2021)","7.00 %"};
+    GDP gdp8 = {"487.2 Billion  USD (2021)","5.24 %"};
+    GDP gdp9 = {"197.1 Billion  USD (2021)","3.20 %"};
+    GDP gdp10 = {"163 Billion  USD (2021)","3.10 %"};
+    GDP gdp11 = {"833.5 Billion  USD (2021)","8.74 %"};
+    GDP gdp12 = {"1.273 Trillion  USD (2021)","3.06 %"};
+    GDP gdp13 = {"1.186 Trillion  USD (2021)","5.31 %"};
+    GDP gdp14 = {"419 Billion  USD (2021)","2.04 %"};
+    GDP gdp15 = {"14.79 Billion  USD (2021)",""};
+    GDP gdp16 = {"4.941 Trillion  USD (2021)","1.03 %"};
+    GDP gdp17 = {"505.9 Billion  USD (2021)","2.59 %"};
+    GDP gdp18 = {"635.7 Billion  USD (2021)","2.64 %"};
+    GDP gdp19 = {"819 Billion  USD (2021)","5.57 %"};
+    GDP gdp20 = {"404.1 Billion  USD (2021)","6.59 %"};
+    GDP gdp21 = {"1.811 Trillion  USD (2021)","2.56 %"};
+    GDP gdp22 = {"344.134 Billion  USD (2021)","2.44 %"};
+    GDP gdp23 = {"373 Billion  USD (2021)","8.69 %"};
+    GDP gdp24 = {"223.2 Billion  USD (2021)","2.68 %"};
+    GDP gdp25 = {"348.3 Billion  USD (2021)","6.19 %"};
 
     //==========================================================================================================
     // INPUT OF COUNTRY GDP BY USER
@@ -151,6 +247,7 @@ int main() {
     Country_info Country_info6 =  {};
     Country_info Country_info7 =  {};
     Country_info Country_info8 =  {};
+    Country_info Country_info9 =  {};
     Country_info Country_info10 = {};
     Country_info Country_info11 = {};
     Country_info Country_info12 = {};
@@ -205,7 +302,14 @@ int main() {
       //===================================================================================================//              
                     case 1:
                         cout << "'Gross Domestic Product [GDP]'\n";
-                        cout<<"====================================="<<endl;
+                        cout<<"_____________________________________________________________________________"<<endl;
+                        cout<<"|1. Gross domestic product (GDP) is the standard measure of the value added  |"<<endl;
+                        cout<<"|  created through the production of goods and services in a country during  |"<<endl;
+                        cout<<"|                       a certain period.                                    |"<<endl;
+                        cout<<"|2.  It is often considered to be the world's most powerful statistical      |"<<endl;
+                        cout<<"|      indicator of national development and progress.                       |"<<endl;
+                        cout<<"|____________________________________________________________________________"<<endl;
+                        
                         
                         
                         
@@ -232,9 +336,10 @@ int main() {
                                     case '1':
                                     output(Country_info1);
                                     output_GDP(gdp_info1);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -251,7 +356,25 @@ int main() {
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of United-States"<<endl;
                             display_GDP(gdp1);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF United States Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
                                 
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
                             
 
@@ -277,9 +400,10 @@ int main() {
                                     case '1':
                                     output(Country_info2);
                                     output_GDP(gdp_info2);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -296,6 +420,25 @@ int main() {
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Russia"<<endl;
                             display_GDP(gdp2);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Russia Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
 
                             break;  
@@ -320,9 +463,10 @@ int main() {
                                     case '1':
                                     output(Country_info3);
                                     output_GDP(gdp_info3);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -339,10 +483,30 @@ int main() {
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of China"<<endl;
                             display_GDP(gdp3);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF CHINA Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
 
                             break;  
-                            case 4:cout<<"What Would you to do ??"<<endl;
+                            case 4:
+                            cout<<"What Would you to do ??"<<endl;
                             cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
                             cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
                             cin>>y_n;
@@ -362,9 +526,10 @@ int main() {
                                     case '1':
                                     output(Country_info4);
                                     output_GDP(gdp_info4);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -381,6 +546,25 @@ int main() {
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Canada"<<endl;
                             display_GDP(gdp4);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Canada Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
 
                             break;  
@@ -405,9 +589,10 @@ int main() {
                                     case '1':
                                     output(Country_info5);
                                     output_GDP(gdp_info5);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -424,6 +609,25 @@ int main() {
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Brazil"<<endl;
                             display_GDP(gdp5);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Brazil Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
 
                             break;  
@@ -448,9 +652,10 @@ int main() {
                                     case '1':
                                     output(Country_info6);
                                     output_GDP(gdp_info6);
+                                    feedback();
                                     break;
                                     case '0':
-                                    cout<<"Thanks for using me\n";
+                                    feedback();
                                     break;
                                     default:
                                     cout<<"Error  !!!\n";
@@ -467,179 +672,1223 @@ int main() {
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Austrila"<<endl;
                             display_GDP(gdp6);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Australia Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
                             }
 
                             break;  
                             case 7:
+                            cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about India : "<<endl;
+                                input(Country_info7);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of India : "<<endl;
+                                input_GDP(gdp_info7);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info7);
+                                    output_GDP(gdp_info7);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'India' : "<<endl;
                             display(Country7);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of India"<<endl;
                             display_GDP(gdp7);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF India Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 8:
+                            cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Argentina : "<<endl;
+                                input(Country_info8);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Argentina : "<<endl;
+                                input_GDP(gdp_info8);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info8);
+                                    output_GDP(gdp_info8);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Argentina' : "<<endl;
                             display(Country8);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Argentina"<<endl;
                             display_GDP(gdp8);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Argentina Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 9:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Kazakhstan : "<<endl;
+                                input(Country_info9);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Kazakhstan : "<<endl;
+                                input_GDP(gdp_info9);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info9);
+                                    output_GDP(gdp_info9);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Kazakhastan' : "<<endl;
+                            cout<<"Basic Information about 'Kazakhstan' : "<<endl;
                             display(Country9);
                              cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Gross Domestic Product [GDP] of Kazakhastan"<<endl;
+                            cout<<"Gross Domestic Product [GDP] of Kazakhstan"<<endl;
                             display_GDP(gdp9);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Kazakhstan Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
 
                             break;  
                             case 10:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Algeria : "<<endl;
+                                input(Country_info10);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Algeria : "<<endl;
+                                input_GDP(gdp_info10);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info10);
+                                    output_GDP(gdp_info10);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Algeria' : "<<endl;
                             display(Country10);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Algeria"<<endl;
                             display_GDP(gdp10);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Algeria Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
 
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
                             break;  
                             case 11:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Saudia-Arabia : "<<endl;
+                                input(Country_info11);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Saudia-Arabia : "<<endl;
+                                input_GDP(gdp_info11);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info11);
+                                    output_GDP(gdp_info11);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Saudia Arabia' : "<<endl;
+                            cout<<"Basic Information about 'Saudia-Arabia' : "<<endl;
                             display(Country11);
                              cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Gross Domestic Product [GDP] of Saudia Arabia"<<endl;
+                            cout<<"Gross Domestic Product [GDP] of Saudia-Arabia"<<endl;
                             display_GDP(gdp11);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Saudia-Arabia Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 12:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Mexico : "<<endl;
+                                input(Country_info12);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Mexico : "<<endl;
+                                input_GDP(gdp_info12);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info12);
+                                    output_GDP(gdp_info12);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Mexico' : "<<endl;
                             display(Country12);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Mexico"<<endl;
                             display_GDP(gdp12);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Mexico Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 13:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Indonesia : "<<endl;
+                                input(Country_info13);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Indonesia : "<<endl;
+                                input_GDP(gdp_info13);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info13);
+                                    output_GDP(gdp_info13);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Indonesia' : "<<endl;
                             display(Country13);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Indonesia"<<endl;
                             display_GDP(gdp13);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Indonesia Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 14:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about South-Africa : "<<endl;
+                                input(Country_info14);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of South-Africa : "<<endl;
+                                input_GDP(gdp_info14);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info14);
+                                    output_GDP(gdp_info14);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Africa' : "<<endl;
+                            cout<<"Basic Information about 'South-Africa' : "<<endl;
                             display(Country14);
                              cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Gross Domestic Product [GDP] of South Africa"<<endl;
+                            cout<<"Gross Domestic Product [GDP] of South-Africa"<<endl;
                             display_GDP(gdp14);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF South-Africa Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 15:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Afghanistan : "<<endl;
+                                input(Country_info15);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Afghanistan : "<<endl;
+                                input_GDP(gdp_info15);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info15);
+                                    output_GDP(gdp_info15);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Afghanistan' : "<<endl;
                             display(Country15);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Afghanistan"<<endl;
                             display_GDP(gdp15);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Afghanistan Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 16:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Japan : "<<endl;
+                                input(Country_info16);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Japan : "<<endl;
+                                input_GDP(gdp_info16);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info16);
+                                    output_GDP(gdp_info16);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Japan' : "<<endl;
                             display(Country16);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Japan"<<endl;
                             display_GDP(gdp16);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Japan Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 17:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Thailand : "<<endl;
+                                input(Country_info17);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Thailand : "<<endl;
+                                input_GDP(gdp_info17);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info17);
+                                    output_GDP(gdp_info17);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Thailand' : "<<endl;
                             display(Country17);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Thailand"<<endl;
                             display_GDP(gdp17);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Thailand Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 18:
+                            cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about sweden : "<<endl;
+                                input(Country_info18);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of sweden : "<<endl;
+                                input_GDP(gdp_info18);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info18);
+                                    output_GDP(gdp_info18);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Sweden' : "<<endl;
+                            cout<<"Basic Information about 'sweden' : "<<endl;
                             display(Country18);
                              cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Gross Domestic Product [GDP] of Sweden"<<endl;
+                            cout<<"Gross Domestic Product [GDP] of sweden"<<endl;
                             display_GDP(gdp18);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF sweden Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 19:
+                            cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Turkey : "<<endl;
+                                input(Country_info19);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Turkey : "<<endl;
+                                input_GDP(gdp_info19);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info19);
+                                    output_GDP(gdp_info19);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Turkey' : "<<endl;
                             display(Country19);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Turkey"<<endl;
                             display_GDP(gdp19);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Turkey Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 20:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Egypt : "<<endl;
+                                input(Country_info8);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Egypt : "<<endl;
+                                input_GDP(gdp_info8);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info8);
+                                    output_GDP(gdp_info8);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Egypt' : "<<endl;
-                            display(Country20);
+                            display(Country8);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Egypt"<<endl;
                             display_GDP(gdp20);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Egypt Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 21:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about South Korea : "<<endl;
+                                input(Country_info21);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of South Korea : "<<endl;
+                                input_GDP(gdp_info21);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info21);
+                                    output_GDP(gdp_info21);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'South Korea' : "<<endl;
                             display(Country21);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of South Korea"<<endl;
                             display_GDP(gdp21);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF South Korea Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 22:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Chile : "<<endl;
+                                input(Country_info22);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Chile : "<<endl;
+                                input_GDP(gdp_info22);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info22);
+                                    output_GDP(gdp_info22);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Chile' : "<<endl;
                             display(Country22);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Chile"<<endl;
                             display_GDP(gdp22);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Chile Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 23:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Malaysia : "<<endl;
+                                input(Country_info23);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Malaysia : "<<endl;
+                                input_GDP(gdp_info23);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info23);
+                                    output_GDP(gdp_info23);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Malaysia' : "<<endl;
                             display(Country23);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Malaysia"<<endl;
                             display_GDP(gdp23);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Malaysia Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 24:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Peru : "<<endl;
+                                input(Country_info24);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Peru : "<<endl;
+                                input_GDP(gdp_info24);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info24);
+                                    output_GDP(gdp_info24);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Peru' : "<<endl;
                             display(Country24);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Peru"<<endl;
                             display_GDP(gdp24);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Peru Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
                             case 25:
+                             cout<<"What Would you to do ??"<<endl;
+                            cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
+                            cout<<"2. Press 'n' to Simply show Data of choosen Country ( Already  Data Entered): "<<endl;
+                            cin>>y_n;
+                            if(y_n=='y'){
+                                cout<<"Please Enter Basic Information about Pakistan : "<<endl;
+                                input(Country_info25);
+                                cout<<"---------------------------------------------------------------\n";
+                                cout<<"PLease Enter GDP of Pakistan : "<<endl;
+                                input_GDP(gdp_info25);
+                                cout<<"========================================================\n";
+                                cout<<"Would you like to view your Input Data ???"<<endl;
+                                cout<<"========================================================\n";
+                                cout<<"Press '1' to yes :"<<endl;
+                                cout<<"Press '0' to No :"<<endl;
+                                cin>>num;
+                                switch(num){
+                                    case '1':
+                                    output(Country_info25);
+                                    output_GDP(gdp_info25);
+                                    feedback();
+                                    break;
+                                    case '0':
+                                    feedback();
+                                    break;
+                                    default:
+                                    cout<<"Error  !!!\n";
+                                    break;
+
+                                }
+                                
+
+                            }
+                            else if(y_n=='n'){
                             cout<<"-------------------------------------------------"<<endl;
                             cout<<"Basic Information about 'Pakistan' : "<<endl;
                             display(Country25);
                              cout<<"-------------------------------------------------"<<endl;
                             cout<<"Gross Domestic Product [GDP] of Pakistan"<<endl;
                             display_GDP(gdp25);
+                            cout<<"=====================================================================\n";
+                            cout<<"            => How to Calculate the GDP OF a Country\n";
+                            cout<<"            => GDP OF Pakistan Graphically\n";
+                            cout<<"=====================================================================\n";
+                            cout<<"How can I help you : ";
+                            cin>>argument;
+                            
+                            if(argument == "graph"/*||argument=="i need graph of gdp"||argument=="graphical respresentation"||argument=="show the graph of gdp"||argument=="display the chart"||argument=="present the visual representation"||argument=="exhibit the plotted data"||argument=="demonstrate the graph"||argument=="illustrate the information graphically"||argument=="could you show the graph"||argument=="let see the graphical representation"*/)
+                            {
+                                graph();
+                                feedback();
+                                 }
+
+                            else if (argument == "formula") {
+                                
+                                feedback_formula(formula);
+                                
+                                    
+                                }
+                            }
 
                             break;  
 
@@ -1046,11 +2295,15 @@ int main() {
                         }
                         break;
                 }
+                
+                
                 return 0;
             default:
                 break;
         }
-    }
+        }
+    
+    
 
     return 0;
 }
@@ -1080,14 +2333,14 @@ void input_GDP( GDP_info &gdp2){
     cout<<"GDP      => ";
     cin >> gdp2.GDP_value ;
     cout<<"GDP Rank => ";
-    cin >> gdp2.GDP_rank ;
+    cin >> gdp2.GDP_growth ;
 }
 void output_GDP( GDP_info gdp2){
     cout<<"===================================="<<endl;
     cout<<"GDP      => ";
     cout <<gdp2.GDP_value <<endl;
     cout<<"GDP Rank => ";
-    cout<< gdp2.GDP_rank << endl;
+    cout<< gdp2.GDP_growth << endl;
 }
 //==============================================================
 void display(Country Country1){
@@ -1124,7 +2377,7 @@ void output(Country_info Country){
 void display_GDP( GDP gdp){
     cout<<"===================================="<<endl;
     cout<<"GDP      => "<<gdp.GDP_value <<endl;
-    cout<<"GDP Rank => "<<gdp.GDP_rank <<endl;
+    cout<<"GDP Rank => "<<gdp.GDP_growth <<endl;
 }
 
 

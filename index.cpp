@@ -1,8 +1,8 @@
 #include <iostream>
+#include<fstream>
 #include<string>
 #include <conio.h> // For _getch() function
 using namespace std;
-// my name is tabish almasaslkfoiAWFBankfhwfkfnof
 
 void printOptions(int selectedOption) {
     system("cls"); // Clear the console (for Windows)
@@ -10,8 +10,452 @@ void printOptions(int selectedOption) {
     cout << "Select One of them :\n";
     cout << (selectedOption == 1 ? "> " : "  ") << "1. Gross Domestic Product [GDP]\n";
     cout << (selectedOption == 2 ? "> " : "  ") << "2. Population\n";
-    cout << (selectedOption == 3 ? "> " : "  ") << "3. Agriculture\n";
-    cout << (selectedOption == 4 ? "> " : "  ") << "4. Industry\n";
+    cout << (selectedOption == 3 ? "> " : "  ") << "3. Industry\n";
+    // cout << (selectedOption == 4 ? "> " : "  ") << "4. Industry\n";
+}
+struct personal_info
+{
+    string name;
+    string contact;
+    string cnic;
+    string guardian;
+    string g_contact;
+    string address;
+    string bloodgroup;
+    string gender;
+};
+//================================================================================================
+// FUNCTION FOR FILE READING
+
+void fileHandling(string fileName){
+    string data;
+
+    ifstream file;
+    file.open(fileName.c_str(), ios::in);
+
+    if (!file.is_open()) {
+        cout << "File open Error: " << fileName << endl;
+    } else {
+        while (!file.eof()) {
+            data = file.get();
+            cout << data;
+        }
+        file.close();  // Close the file after reading
+    }
+}
+//============================================================================================
+// Funtion for validation
+void validation(){
+     int first,last;
+
+    int sum_11=0;
+
+int long a_11[16]; // 4  9  0  4  7  1  0  0  1  5  8  6  2  3  1  4
+int long  mul_11[16];
+int long a_23[16]={2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1};
+card_valid:
+    cout<<endl<<"PLease Enter your Master-card / Visa-card Number : ";
+for(int i=0;i<16;i++){
+    cin>>a_11[i];
+}
+
+
+for(int i=0;i<16;i++){
+    mul_11[i]=a_11[i]*a_23[i];
+    if(mul_11[i]>9){
+        first = mul_11[i]/10;
+        last = mul_11[i]%10;
+        sum_11= sum_11 + first + last ;
+
+    }
+    else{
+        sum_11+= mul_11[i];
+       
+}
+}
+
+if(sum_11 % 10 == 0){
+    cout<<"\nConguratulation Your Payment Successfully Transferred\n";
+}
+else{
+    cout<<"Sorry Sir,Your Card is not Working\n";
+    goto card_valid;
+    
+
+
+   }   }
+
+// ===================================================================================================
+//  Function for Industry
+
+void industry(){
+// 4  9  0  4  7  1  0  0  1  5  8  6  2  3  1  4
+
+       
+    int industry_selection,service_selection,car_selection,check,bill,payment; 
+    string customer_service,pcu,toyota;
+    personal_info customer_contact,customer_CNIC,customer_name,guardian_name,guardian_contact,customer_adress,customer_bloodgroup,customer_gender;
+    cout<<"\n1. Automobile Production Unit \t\t 2. Textile Production Unit\n";
+    cout<<"3. Sugar Production Unit    \t\t 4. Ammunition Production Unit\n";
+    cout<<"---------------------------------\n";
+    cout<<"Please Select your Industry : "; 
+    cin>>industry_selection;
+    cin.ignore();
+    switch(industry_selection){
+        case 1:
+        cout<<"================================================\n";
+        cout<<"You Selected :- Automobile Production Units\n\n";
+       // cout<<"1. Toyota\n";
+        // cout<<"2. Honda\n";
+        // cout<<"3. BMW\n";
+        // cout<<"4. Mercedes\n";
+        cout<<"Enter Company : ";
+        getline(cin,toyota);
+        
+        if(toyota == "Toyota"|| toyota == "toyota"){
+            cout<<"1. Customer-Service\n";
+            cout<<"2. Production Control Unit [PCU]\n";
+            cout<<"Press Number to select service : ";
+            cin>>service_selection;
+            cin.ignore();
+            switch(service_selection){
+                case 1:
+                cout<<"Dear customer welcome to the Customer-Service\n";
+                cout<<"How can I help you...?\n";
+                cout<<"==============================================\n";
+                getline(cin,customer_service);
+                if(customer_service=="I want to buy a car"||customer_service=="i want to buy a car"){
+                    cout<<endl;
+                    cout<<"Some cars model are here.........\n";
+                    cars_repeat:
+                    cout<<"------------------------------------------\n";
+                    cout<<"1.Toyota Corolla XLi       \n";
+                    cout<<"2.Toyota Fortuner Legender \n";
+                    cout<<"3.Toyota Supra Mk-5        \n";
+                    cout<<"4.Toyota Landcrusier ZX    \n";
+                    cout<<"5.Toyota Crown             \n";
+                    cout<<"6.Toyota Cross(Hybrid)     \n\n";
+                    cout<<"Please select your car According to Number : ";
+                    cin>>car_selection;
+                    cin.ignore();
+                    if(car_selection==1){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Corolla XLi : \n";
+                        cout<<"Model         : 2013\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Xli-Auto Transmission\n";
+                        cout<<"Colour        : Black\n";
+                        cout<<"Engine        : 1300-CC\n";
+                        cout<<"Average/Litre : 11-km/L\n";
+                        cout<<"Tyre-Size     : 215/45ZR17\n";
+                        
+
+                    }
+                    else if(car_selection==2){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Fortuner Legender : \n";
+                        cout<<"Model         : 2023\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Fortuner legender-Auto Transmission\n";
+                        cout<<"Colour        : Glossy-Black\n";
+                        cout<<"Engine        : 2.8L, 1GD-FTV (High)-/-500 / 1,600-2,800 (Nm/rpm)\n";
+                        cout<<"Average/Litre : 11-km/L\n";
+                        cout<<"Tyre-Size     : 265 / 65 R17 Front Tyres & 265 / 65 R17 Rear Tyres\n";
+                        
+
+                    }
+                    else if(car_selection==3){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Supra MK-5  : \n";
+                        cout<<"Model         : 2023\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Toyota Supra MK-5-Auto Transmission\n";
+                        cout<<"Colour        : Cherry-Red\n";
+                        cout<<"Engine        : 2.0-Liter Turbocharged Inline-Four-/-500 / 1,600-2,800 (Nm/rpm)\n";
+                        cout<<"Average/Litre : 7-km/L\n";
+                        cout<<"Tyre-Size     : 225/50R17 98H XL\n";
+                        
+
+                    }
+                    else if(car_selection==4){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Landcrusier ZX  : \n";
+                        cout<<"Model         : 2018\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Toyota Landcrusier ZX-Auto Transmission\n";
+                        cout<<"Colour        : Pearl-White\n";
+                        cout<<"Engine        :  3.3-liter F33A-FTV twin-turbo V6 diesel\n";
+                        cout<<"Average/Litre : 7-km/L\n";
+                        cout<<"Tyre-Size     : 265/55R20\n";
+                        
+
+                    }
+                    else if(car_selection==5){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Crown  : \n";
+                        cout<<"Model         : 2023\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Toyota Crown-Auto Transmission\n";
+                        cout<<"Colour        : Pearl-White\n";
+                        cout<<"Engine        : 2.4L turbocharged hybrid engine\n";
+                        cout<<"Average/Litre : 23-km/L\n";
+                        cout<<"Tyre-Size     : 225/45R21 95W\n";
+                        
+
+                    }
+                    else if(car_selection==6){
+                        cout<<"=====================================================\n\n";
+                        cout<<"Detail about Toyota Cross  : \n";
+                        cout<<"Model         : 2023\n";
+                        cout<<"Make          : Toyota\n";
+                        cout<<"Varrient      : Toyota Cross-Auto Transmission\n";
+                        cout<<"Colour        : BLue\n";
+                        cout<<"Engine        : 2.4L turbocharged hybrid engine\n";
+                        cout<<"Average/Litre : 23-km/L\n";
+                        cout<<"Tyre-Size     : 225/45R21 95W\n";
+                        
+
+                    }
+                    else{
+                        cout<<"Invalid Entry\n";
+                        goto cars_repeat;
+                    }
+                    
+
+                     
+                    
+                }
+                else{
+                    cout<<"=============================================\n";
+                    cout<<"Please Enter Correct Number\n";
+                    cout<<"=============================================\n\n";
+                }
+                cout<<endl;
+                cout<<"========================================================\n";
+
+                cout<<"Dear customer,Please fill some documentation\n\n";
+                cout<<"Customer Name           : ";
+                getline(cin,customer_name.name);
+                cout<<"Customer Contact-Number : ";
+                getline(cin,customer_contact.contact);
+                cout<<"Customer CNIC           : ";
+                getline(cin,customer_CNIC.cnic);
+                cout<<"Customer Blood-Group    : ";
+                getline(cin,customer_bloodgroup.bloodgroup);
+                cout<<"Customer Adress         : ";
+                getline(cin,customer_adress.address);
+                cout<<"Customer Gender         : ";
+                getline(cin,customer_gender.gender);
+                cout<<"Guardian Name           : ";
+                getline(cin,guardian_name.guardian);
+                cout<<"Guardian Contact Number : ";
+                getline(cin,guardian_contact.g_contact);
+                cout<<"==================================================================\n";
+                cout<<"Press 1 to View your personal Details : \n";
+                cout<<"Press 0 to continue Booking Process : \n";
+                cin>>check;
+                if(check==1){
+                cout<<"================================================================\n";
+                cout<<"Customer Name          : ";
+                cout<<customer_name.name<<endl;
+                cout<<"Contact-Number         : ";
+                cout<<customer_contact.contact<<endl;
+                cout<<"CNIC                   : ";
+                cout<<customer_CNIC.cnic<<endl;
+                cout<<"Blood-Group            : ";
+                cout<<customer_bloodgroup.bloodgroup<<endl;
+                cout<<"Adress                 : ";
+                cout<<customer_adress.address<<endl;
+                cout<<"Gender                : ";
+                cout<<customer_gender.gender<<endl;
+                cout<<"Guardian Name          : ";
+                cout<<guardian_name.guardian<<endl;
+                cout<<"Guardian Contact Number: ";
+                cout<<guardian_contact.g_contact<<endl;
+                cout<<"========================================================================\n";
+
+                }
+                else if(check ==0){
+                    cout<<"================================================\n";
+                    cout<<"              Your Bill Calculation             \n";
+                    cout<<"================================================\n";
+                    if(car_selection==1){
+                        cout<<" Toyota Corolla Xli \t 2013\n";
+                        cout<<"Total Payment in Pkr = Rs:3000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 10676.93 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                            
+                            if(payment==1){                                
+validation();
+
+                            }
+
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    else if(car_selection==2){
+                        cout<<" Toyota Fortuner Legender \t 2018\n";
+                        cout<<"Total Payment in Pkr = Rs:25000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 88974.38 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                           
+                            if(payment==1){                                
+validation();
+
+                            }
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    else if(car_selection==3){
+                        cout<<" Toyota Supra Mk-5 \t 2023\n";
+                        cout<<"Total Payment in Pkr = Rs:60000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 213538.50 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                           
+                            if(payment==1){                               
+validation();
+
+                            }
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    else if(car_selection==4){
+                        cout<<" Toyota LandCrusier ZX \t 2018\n";
+                        cout<<"Total Payment in Pkr = Rs:50000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 177948.75 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                            
+                            if(payment==1){                             
+validation();
+
+                            }
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    else if(car_selection==5){
+                        cout<<" Toyota Crown  \t 20\n";
+                        cout<<"Total Payment in Pkr = Rs:25000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 88974.38 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                           
+                            if(payment==1){                                
+validation();
+
+                            }
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    else if(car_selection==6){
+                        cout<<" Toyota Cross\t 2023\n";
+                        cout<<"Total Payment in Pkr = Rs:15000000\n";
+                        cout<<"                OR                \n";
+                        cout<<"Total Payment in USD = 53384.63 Usd\n";
+                        cout<<"=================================================\n";
+                        cout<<"Press 1 to continue the Booking Process : ";
+                        cin>>bill;
+                        if(bill==1){
+                            cout<<"==============================================\n";
+                            cout<<"            PAYMENT METHOD                    \n";
+                            cout<<"==============================================\n";
+                            cout<<"1. Bank transfer\n";
+                            cout<<"2. Cash Payment\n";
+                            cout<<"================================================\n";
+                            cout<<"Please Select Your Payment Method : ";
+                            cin>>payment;
+                         
+                            if(payment==1){                               
+validation();
+
+                            }
+                            else if(payment==2){
+                                cout<<"\nConguratulation Your Payment Successfully Recieved\n";
+                            }
+                        }
+                    }
+                    
+
+                }
+                
+                
+            
+            }
+
+            
+            
+        }
+
+
+    }
 }
 
 void feedback_formula(int formula){
@@ -106,32 +550,38 @@ void feedback(){
                             
 
 }
-// STRUCTURE
+// STRUCTURE FOR COUNTRY DATA WHICH IS ALREADY ENTERED
 struct Country {
     string name;
     string location;
     string area;
     string capital;
     string language;
+    string currency;
 };
+//  USING STRUCTURE TO STORE DATA WHICH IS INPUT BY USER
 struct Country_info {
     string name1;
     string location1;
     string area1;
     string capital1;
     string language1;
+    string currency1;
 };
-// FUNCIONS
+// FUNCIONS TO DISPLAY COUNTRY DATA
 void display( Country Country1); 
+// FUNCTION TO TAKE INPUT FROM USER IN STRUCTURES
 void input(Country_info &Country);
+// FUNCTION TO DISPLAY THE DATA ENTERED BY THE USER
 void output(Country_info Country);
 
 //======================================================================================================
-// STRUCTURE
+// STRUCTURE TO STORE THE GDP OF COUNTRIES
 struct GDP {
     string GDP_value;
     string GDP_growth;
 };
+// STRUCTURE TO TAKE INPUT FROM USER
 struct GDP_info {
     string GDP_value;
     string GDP_growth;
@@ -140,6 +590,21 @@ struct GDP_info {
 void display_GDP( GDP gdp);
 void input_GDP( GDP_info &gdp2);
 void output_GDP( GDP_info gdp2);
+//===============================================================================================
+// STRUCTURE TO STORE DATA ABOUT POPULATION
+
+struct Population{
+    string population;
+    string population_growth;
+    string birth_rate;
+    string death_rate;
+    string effects;
+
+};
+// FUNCTION TO DISPLAY THE POPULATION DATA
+
+void display_population(Population data);
+
 
 //==========================================================================================================
 
@@ -151,9 +616,10 @@ int main() {
     string argument,star;
     char num;
     int country_name;
+    string customer;
 
 
-    const int totalOptions = 4;
+    const int totalOptions = 3;
     int selectedOption = 1;
  //==============================================================================================================================================================//
     GDP gdp1 = {"23.32 Trillion USD (2021)","2.06 %"};
@@ -265,6 +731,9 @@ int main() {
     Country_info Country_info23 = {}; 
     Country_info Country_info24 = {}; 
     Country_info Country_info25 = {}; 
+
+    //=====================================================================================================
+   
 
     //==================================================================================================================================//
     cout<<endl<<endl;
@@ -2030,267 +2499,86 @@ int main() {
                         
                         break;
    //=================================================================================================//                     
-                    case 3:
-                        cout << "Agriculture\n";
-
-                        switch(country_name){
-                            case 1:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about United States : "<<endl;
-                            display(Country1);
-                            break;  
-                            case 2:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Russia' : "<<endl;
-                            display(Country2);
-                            break;  
-                            case 3:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'China' : "<<endl;
-                            display(Country3);
-                            break;  
-                            case 4:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'canada' : "<<endl;
-                            display(Country4);
-                            break;  
-                            case 5:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Brazil' : "<<endl;
-                            display(Country5);
-                            break;  
-                            case 6:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Australia' : "<<endl;
-                            display(Country6);
-                            break;  
-                            case 7:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'India' : "<<endl;
-                            display(Country7);
-                            break;  
-                            case 8:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Argentina' : "<<endl;
-                            display(Country8);
-                            break;  
-                            case 9:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Kazakhastan' : "<<endl;
-                            display(Country9);
-                            break;  
-                            case 10:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Algeria' : "<<endl;
-                            display(Country10);
-                            break;  
-                            case 11:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Saudia Arabia' : "<<endl;
-                            display(Country11);
-                            break;  
-                            case 12:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Mexico' : "<<endl;
-                            display(Country12);
-                            break;  
-                            case 13:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Indonesia' : "<<endl;
-                            display(Country13);
-                            break;  
-                            case 14:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Africa' : "<<endl;
-                            display(Country14);
-                            break;  
-                            case 15:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Afghanistan' : "<<endl;
-                            display(Country15);
-                            break;  
-                            case 16:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Japan' : "<<endl;
-                            display(Country16);
-                            break;  
-                            case 17:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Thailand' : "<<endl;
-                            display(Country17);
-                            break;  
-                            case 18:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Sweden' : "<<endl;
-                            display(Country18);
-                            break;  
-                            case 19:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Turkey' : "<<endl;
-                            display(Country19);
-                            break;  
-                            case 20:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Egypt' : "<<endl;
-                            display(Country20);
-                            break;  
-                            case 21:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Korea' : "<<endl;
-                            display(Country21);
-                            break;  
-                            case 22:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Chile' : "<<endl;
-                            display(Country22);
-                            break;  
-                            case 23:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Malaysia' : "<<endl;
-                            display(Country23);
-                            break;  
-                            case 24:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Peru' : "<<endl;
-                            display(Country24);
-                            break;  
-                            case 25:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Pakistan' : "<<endl;
-                            display(Country25);
-                            break;  
-
-                        }
-                        break;
+                    
     //================================================================================================//                    
-                    case 4:
+                    case 3:
                         cout << "'Industry'\n";
 
                         switch(country_name){
                             case 1:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about United States : "<<endl;
-                            display(Country1);
+                            industry();
+                            
+                            
                             break;  
                             case 2:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Russia' : "<<endl;
-                            display(Country2);
+                           industry();
                             break;  
                             case 3:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'China' : "<<endl;
-                            display(Country3);
+                            industry();
                             break;  
                             case 4:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'canada' : "<<endl;
-                            display(Country4);
-                            break;  
+                            industry();
                             case 5:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Brazil' : "<<endl;
-                            display(Country5);
-                            break;  
+                           industry();
                             case 6:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Australia' : "<<endl;
-                            display(Country6);
+                            industry();
                             break;  
                             case 7:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'India' : "<<endl;
-                            display(Country7);
+                           industry();
                             break;  
                             case 8:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Argentina' : "<<endl;
-                            display(Country8);
+                          industry();
                             break;  
                             case 9:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Kazakhastan' : "<<endl;
-                            display(Country9);
+                          industry();
                             break;  
                             case 10:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Algeria' : "<<endl;
-                            display(Country10);
+                          industry();
                             break;  
                             case 11:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Saudia Arabia' : "<<endl;
-                            display(Country11);
+                        industry();
                             break;  
                             case 12:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Mexico' : "<<endl;
-                            display(Country12);
+                           industry();
                             break;  
                             case 13:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Indonesia' : "<<endl;
-                            display(Country13);
+                          industry();
                             break;  
                             case 14:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Africa' : "<<endl;
-                            display(Country14);
+                           industry();
                             break;  
                             case 15:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Afghanistan' : "<<endl;
-                            display(Country15);
+                            industry();
                             break;  
                             case 16:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Japan' : "<<endl;
-                            display(Country16);
+                            industry();
                             break;  
                             case 17:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Thailand' : "<<endl;
-                            display(Country17);
+                           industry();
                             break;  
                             case 18:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Sweden' : "<<endl;
-                            display(Country18);
+                          industry();
                             break;  
                             case 19:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Turkey' : "<<endl;
-                            display(Country19);
+                            industry();
                             break;  
                             case 20:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Egypt' : "<<endl;
-                            display(Country20);
+                           industry();
                             break;  
                             case 21:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Korea' : "<<endl;
-                            display(Country21);
+                          industry();
                             break;  
                             case 22:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Chile' : "<<endl;
-                            display(Country22);
+                          industry();
                             break;  
                             case 23:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Malaysia' : "<<endl;
-                            display(Country23);
+                           industry();
                             break;  
                             case 24:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Peru' : "<<endl;
-                            display(Country24);
+                            industry();
                             break;  
                             case 25:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Pakistan' : "<<endl;
-                            display(Country25);
+                            industry();
                             break;  
 
                         }
@@ -2324,6 +2612,8 @@ void input(Country_info &Country){
     cin >> Country.capital1 ;
     cout<<  "Language: "; 
     cin >> Country.language1 ;
+    cout<<  "Currency: ";
+    cin>> Country.currency1;
     
 
 }
@@ -2353,6 +2643,7 @@ void display(Country Country1){
     cout << "Area: " << Country1.area << endl;
     cout << "Capital: " << Country1.capital << endl;
     cout << "Language: " << Country1.language << endl;
+    cout<<  "Currency: "<< Country1.currency<<endl;
     
 
 }
@@ -2371,6 +2662,8 @@ void output(Country_info Country){
     cout<< Country.capital1<<endl ;
     cout<<  "Language: "; 
     cout<< Country.language1<<endl ;
+    cout<<  "Currency: ";
+    cout<< Country.currency1<<endl;
     
 
 }
@@ -2379,6 +2672,19 @@ void display_GDP( GDP gdp){
     cout<<"===================================="<<endl;
     cout<<"GDP      => "<<gdp.GDP_value <<endl;
     cout<<"GDP Rank => "<<gdp.GDP_growth <<endl;
+}
+//======================================================================
+
+void display_population(Population data){
+    cout<<"===============================================================\n";
+    cout<<"                        POPULATION                             \n";
+    cout<<"===============================================================\n";
+    cout<<"1.Population                : "<<data.population<<endl;
+    cout<<"2.Population growth Rate    : "<<data.population_growth<<endl;
+    cout<<"3.Birth Rate                : "<<data.birth_rate<<endl;
+    cout<<"4.Death Rate                : "<<data.death_rate<<endl;
+    cout<<"5.Effect of Over-Population : "<<data.effects<<endl;
+
 }
 
 

@@ -83,7 +83,8 @@ else{
     
 
 
-   }   }
+   }  
+    }
 
 // ===================================================================================================
 //  Function for Industry
@@ -2370,129 +2371,79 @@ int main() {
 
                         switch(country_name){
                             case 1:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about United States : "<<endl;
-                            display(Country1);
+                            fileHandling("country1.txt");
                             break;  
                             case 2:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Russia' : "<<endl;
-                            display(Country2);
+                            fileHandling("country2.txt");
                             break;  
                             case 3:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'China' : "<<endl;
-                            display(Country3);
+                             fileHandling("country3.txt");
                             break;  
                             case 4:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'canada' : "<<endl;
-                            display(Country4);
+                            fileHandling("country4.txt");
                             break;  
                             case 5:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Brazil' : "<<endl;
-                            display(Country5);
+                             fileHandling("country5.txt");
                             break;  
                             case 6:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Australia' : "<<endl;
-                            display(Country6);
+                             fileHandling("country6.txt");
                             break;  
                             case 7:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'India' : "<<endl;
-                            display(Country7);
+                             fileHandling("country7.txt");
                             break;  
                             case 8:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Argentina' : "<<endl;
-                            display(Country8);
+                             fileHandling("country8.txt");
                             break;  
                             case 9:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Kazakhastan' : "<<endl;
-                            display(Country9);
+                            fileHandling("country9.txt");
                             break;  
                             case 10:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Algeria' : "<<endl;
-                            display(Country10);
+                             fileHandling("country10.txt");
                             break;  
                             case 11:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Saudia Arabia' : "<<endl;
-                            display(Country11);
+                             fileHandling("country11.txt");
                             break;  
                             case 12:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Mexico' : "<<endl;
-                            display(Country12);
+                           fileHandling("country12.txt");
                             break;  
                             case 13:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Indonesia' : "<<endl;
-                            display(Country13);
+                             fileHandling("country13.txt");
                             break;  
                             case 14:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Africa' : "<<endl;
-                            display(Country14);
+                             fileHandling("country14.txt");
                             break;  
                             case 15:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Afghanistan' : "<<endl;
-                            display(Country15);
+                             fileHandling("country15.txt");
                             break;  
                             case 16:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Japan' : "<<endl;
-                            display(Country16);
+                            fileHandling("country16.txt");
                             break;  
                             case 17:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Thailand' : "<<endl;
-                            display(Country17);
+                           fileHandling("country17.txt");
                             break;  
                             case 18:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Sweden' : "<<endl;
-                            display(Country18);
+                            fileHandling("country18.txt");
                             break;  
                             case 19:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Turkey' : "<<endl;
-                            display(Country19);
+                             fileHandling("country19.txt");
                             break;  
                             case 20:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Egypt' : "<<endl;
-                            display(Country20);
+                            fileHandling("country20.txt");
                             break;  
                             case 21:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'South Korea' : "<<endl;
-                            display(Country21);
+                             fileHandling("country21.txt");
                             break;  
                             case 22:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Chile' : "<<endl;
-                            display(Country22);
+                             fileHandling("country22.txt");
                             break;  
                             case 23:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Malaysia' : "<<endl;
-                            display(Country23);
+                             fileHandling("country23.txt");
                             break;  
                             case 24:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Peru' : "<<endl;
-                            display(Country24);
+                             fileHandling("country24.txt");
                             break;  
                             case 25:
-                            cout<<"-------------------------------------------------"<<endl;
-                            cout<<"Basic Information about 'Pakistan' : "<<endl;
-                            display(Country25);
+                             fileHandling("country25.txt");
                             break;  
 
                         }

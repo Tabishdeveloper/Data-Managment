@@ -4,7 +4,7 @@
 #include <conio.h> // For _getch() function
 using namespace std;
 
-void printOptions(int selectedOption) {
+void printOptions(int selectedOption){    // func is called at 756
     system("cls"); // Clear the console (for Windows)
 
     cout << "Select One of them :\n";
@@ -13,6 +13,186 @@ void printOptions(int selectedOption) {
     cout << (selectedOption == 3 ? "> " : "  ") << "3. Industry\n";
     // cout << (selectedOption == 4 ? "> " : "  ") << "4. Industry\n";
 }
+//==================================================================================================//
+// Function for Login in File handling
+void login(){
+	int check=0;
+	string username;
+	string password_user;
+	string line_username;
+	string line_password;
+	bool loop_check_username= true;
+	bool loop_check_password=true;
+	
+	
+		
+	cout<<"Would you like to login or signup? Press '1' for signup, Press '2' for login"<<endl;
+	cin>>check;
+	cout<<endl;
+	
+	//Creating file of login
+	ofstream my_file;
+	my_file.open("Login.txt",  ios::app);
+	my_file.close();
+	
+	//Creating file of password
+	ofstream myfile_password;
+	myfile_password.open("Password.txt", ios::app);
+	myfile_password.close();
+	
+	
+	//If you want to signup, this code block will run
+	
+	if (check== 1){
+	
+	//This is the code for taking username and checking if it is duplicate
+	
+	loop_username_signup:
+		
+	cout<<"Please enter a username"<<endl;
+	cin>>username;
+	cout<<endl;
+	
+	ifstream login;
+	login.open("Login.txt");
+	
+
+	cin.ignore();
+	while(!login.eof()){
+		
+		getline(login, line_username);
+		
+		if (line_username == username){
+			
+			cout<<"You have entered a duplicate username"<<endl<<endl;
+			loop_check_username=false;
+			goto loop_username_signup;
+		}
+			
+		}
+		
+		login.close();
+		
+	if (loop_check_username==true){
+	
+			
+		ofstream myfile_login;
+	    myfile_login.open("Login.txt", ios::app);
+	    myfile_login<<endl<<username;
+}
+
+
+//Now adding code for entering and checking password
+
+
+   loop_password_signup:
+
+   cout<<"Please enter a password"<<endl;
+   cin>>password_user;
+   cout<<endl;
+   
+   ifstream password;
+   password.open("Password.txt", ios::app);
+   cin.ignore();
+   while(!password.eof()){
+   	
+   	getline(password, line_password);
+   	
+   	if (line_password== password_user){
+   		
+   		cout<<"Your password is not unique"<<endl;
+   		loop_check_password= false;
+   		goto loop_password_signup;
+	   }
+	   
+   }
+   password.close();
+   
+   if (loop_check_password== true){
+   	
+   	
+		ofstream myfile_password;
+	    myfile_password.open("Password.txt", ios::app);
+	    myfile_password<<endl<<password_user;
+   }
+   
+
+}
+
+// If you want to access login, this code block will run
+
+else if (check==2){
+	
+	
+	for (int counter=3; counter>0; counter--){
+	
+	cout<<"Please enter your username"<<endl;
+	cin>>username;
+	cout<<endl;
+	
+	
+	ifstream  login_open;
+	login_open.open("Login.txt");
+    cin.ignore();
+	while (!login_open.eof()){
+	
+	getline(login_open, line_username);
+	
+	if(line_username==username){
+		
+	
+		loop_check_username=false;
+		break;
+		
+	}
+	
+}
+    if (loop_check_username==false){
+    	
+    	login_open.close();
+    	
+    	login_open.open("Password.txt");
+    	
+    	cout<<"Please enter your password"<<endl;
+    	cin>>password_user;
+    	cout<<endl;
+        cin.ignore();
+    	
+    	while(!login_open.eof()){
+    		
+    		getline(login_open, line_password);
+    		
+    		if(password_user==line_password){
+    			
+    			loop_check_password=false;
+			}
+		}
+		
+		if (loop_check_password==false){
+			
+			cout<<"Welcome to the terminal";
+			break;
+		}
+		
+		else{
+			
+			cout<<"Your password is incorrect. Please try again."<<endl;
+			cout<<"You have "<<counter<<" tries remaining"<<endl<<endl;
+		}
+    	
+	}
+	
+	else{
+		
+		cout<<"Your username is incorrect. Please try again"<<endl;
+		cout<<"You have "<<counter<<" tries remaining"<<endl<<endl;
+	}
+}
+}
+	
+
+}
+//==========================================================================================================//
 struct personal_info
 {
     string name;
@@ -121,6 +301,10 @@ void industry(){
             cin.ignore();
             switch(service_selection){
                 case 1:
+                cout<<"===================================================================\n";
+                
+                login();
+                cout<<"\n=====================================================================\n";
                 cout<<"Dear customer welcome to the Customer-Service\n";
                 cout<<"How can I help you...?\n";
                 cout<<"==============================================\n";
@@ -524,7 +708,7 @@ void graph(){
 void feedback(){
     string star;
 
-  cout<<"============================================================================================\n";
+  cout<<"\n\n============================================================================================\n";
   
                         
                                     cout<<"Thank you for using me\n";
@@ -577,7 +761,7 @@ void input(Country_info &Country);
 void output(Country_info Country);
 
 //======================================================================================================
-// STRUCTURE TO STORE THE GDP OF COUNTRIES
+// STRUCTURE TO STORE THE GDP OF COUNTRIES  //626 line main
 struct GDP {
     string GDP_value;
     string GDP_growth;
@@ -623,8 +807,8 @@ int main() {
     const int totalOptions = 3;
     int selectedOption = 1;
  //==============================================================================================================================================================//
-    GDP gdp1 = {"23.32 Trillion USD (2021)","2.06 %"};
-    GDP gdp2 = {"1.779 Trillion USD (2021)","-2.07 %"};
+    GDP gdp1 = {"23.32 Trillion USD (2021)","2.06 %"};       //func at line 2607.
+    GDP gdp2 = {"1.779 Trillion USD (2021)","-2.07 %"};      //struct at line 580
     GDP gdp3 = {"17.73 Trillion USD (2021)","2.99 %"};
     GDP gdp4 = {"1.988 Trillion USD (2021)","3.40 %"};
     GDP gdp5 = {"1.609 Trillion USD (2021)","2.90 %"};
@@ -651,8 +835,8 @@ int main() {
 
     //==========================================================================================================
     // INPUT OF COUNTRY GDP BY USER
-    GDP_info gdp_info1  = {};
-    GDP_info gdp_info2  = {};
+    GDP_info gdp_info1  = {};     // func at 2600 line
+    GDP_info gdp_info2  = {};     //struct at 586 line
     GDP_info gdp_info3  = {};
     GDP_info gdp_info4  = {};
     GDP_info gdp_info5  = {};
@@ -679,36 +863,36 @@ int main() {
 
 
 //================================================================================================================================================================//
-    Country Country1  = {"United States", " North America", "9,631,418 sq km", "Washington, D.C."};
-    Country Country2  = {"Russia", "Europe and Asia" , "17,098,242 sq km", "Moscow"};
-    Country Country3  = {"China", "Asia" , "9,596,960 sq km", "Beijing"};
-    Country Country4  = {"Canada", "North America" , "9,984,670 sq km", "Ottawa"};
-    Country Country5  = {"Brazil", "South America" , "8,515,767 sq km", "Brasília"};
-    Country Country6  = {"Australia", "Oceania" , "7,686,850 sq km", "Canberra"};
-    Country Country7  = {"India", "Asia" , "3,287,263 sq km", "New Delhi"};
-    Country Country8  = {"Argentina", "South America" , "2,780,400 sq km", "Buenos Aires"};
-    Country Country9  = {"Kazakhstan", "Asia and Europe" , "2,724,900 sq km", "Nur-Sultan"};
-    Country Country10 = {"Algeria", "Africa" , "2,381,741 sq km", "Algiers"};
-    Country Country11 = {"Saudi Arabia", " Asia" , "2,149,690 sq km", "Riyadh"};
-    Country Country12 = {"Mexico", " North America" , "1,964,375 sq km", "Mexico City"};
-    Country Country13 = {"Indonesia", " Asia" , "1,904,569 sq km", "Jakarta"};
-    Country Country14 = {"South Africa", " Africa" , "1,221,037 sq km", "Pretoria (administrative), Bloemfontein (judicial), Cape Town (legislative)"};
-    Country Country15 = {"Afghanistan", " Asia" , "652,230 sq km", "Kabul"};
-    Country Country16 = {"Japan", " East Asia" , "377,975 sq km", "Tokyo","Japanese"}; 
-    Country Country17 = {"Thailand", " Southeast Asia" , "513,120 sq km", "Bangkok","Thai"}; 
-    Country Country18 = {"Sweden", " Northern Europe" , "450,295 sq km", "Stockholm"," Swedish"}; 
-    Country Country19 = {"Turkey", " Western Asia" , " 783,356 sq km","Ankara","Turkish"}; 
-    Country Country20 = {"Egypt", " North Africa", " 1.01 million sq km" , " Cairo", "Arabic"}; 
-    Country Country21 = {"South Korea", "  East Asia", " 100,210 sq km" , " Seoul", "Korean"}; 
-    Country Country22 = {"Chile", "  South America", " 756,102 sq km" , " Santiago", "Spanish"}; 
-    Country Country23 = {"Malaysia", "  Southeast Asia", "  330,803 sq km" , " Kuala Lumpur", "Malay"}; 
-    Country Country24 = {"Peru", "  South America", "  1.28 million sq km" , " Lima", "Spanish"}; 
-    Country Country25 = {"Pakistan", " South Asia", "  881,913 sq km" , " Islamabad", "Urdu"}; 
+    Country Country1  = {"United States", " North America", "9,631,418 sq km", "Washington, D.C."," English","dollar"};//2615
+    Country Country2  = {"Russia", "Europe and Asia" , "17,098,242 sq km", "Moscow","Russian","ruble"};  //struct at 555
+    Country Country3  = {"China", "Asia" , "9,596,960 sq km", "Beijing","Mandarin","renminbi"};    //func at 2615
+    Country Country4  = {"Canada", "North America" , "9,984,670 sq km", "Ottawa","English, French","canadian dollar"};
+    Country Country5  = {"Brazil", "South America" , "8,515,767 sq km", "Brasília","Portuguese","brazilian real"};
+    Country Country6  = {"Australia", "Oceania" , "7,686,850 sq km", "Canberra","English","australian dollar"};
+    Country Country7  = {"India", "Asia" , "3,287,263 sq km", "New Delhi","Hindi","indian rupee"};
+    Country Country8  = {"Argentina", "South America" , "2,780,400 sq km", "Buenos Aires","Spanish","Argentine peso"};
+    Country Country9  = {"Kazakhstan", "Asia and Europe" , "2,724,900 sq km", "Nur-Sultan","Kazakh","kazakhtani tenge"};
+    Country Country10 = {"Algeria", "Africa" , "2,381,741 sq km", "Algiers","Arabic, Tamazight (Berber)","algerian denar"};
+    Country Country11 = {"Saudi Arabia", " Asia" , "2,149,690 sq km", "Riyadh","Arabic","saudi riyal"};
+    Country Country12 = {"Mexico", " North America" , "1,964,375 sq km", "Mexico City","Spanish","mexican peso"};
+    Country Country13 = {"Indonesia", " Asia" , "1,904,569 sq km", "Jakarta","Indonesian","indonesian rupiah"};
+    Country Country14 = {"South Africa", " Africa" , "1,221,037 sq km", "Pretoria (administrative), Bloemfontein (judicial), Cape Town (legislative)","11 official languages, including Zulu, Xhosa, and Afrikaans","south african rand"};
+    Country Country15 = {"Afghanistan", " Asia" , "652,230 sq km", "Kabul","Pashto,Dari","afghan afghani"};
+    Country Country16 = {"Japan", " East Asia" , "377,975 sq km", "Tokyo","Japanese"," japanese yen"}; 
+    Country Country17 = {"Thailand", " Southeast Asia" , "513,120 sq km", "Bangkok","Thai","thai baht"}; 
+    Country Country18 = {"Sweden", " Northern Europe" , "450,295 sq km", "Stockholm"," Swedish","swedish krona"}; 
+    Country Country19 = {"Turkey", " Western Asia" , " 783,356 sq km","Ankara","Turkish","turkish lira"}; 
+    Country Country20 = {"Egypt", " North Africa", " 1.01 million sq km" , " Cairo", "Arabic","egyptian pound"}; 
+    Country Country21 = {"South Korea", "  East Asia", " 100,210 sq km" , " Seoul", "Korean","south korean won"}; 
+    Country Country22 = {"Chile", "  South America", " 756,102 sq km" , " Santiago", "Spanish","chilean peso"}; 
+    Country Country23 = {"Malaysia", "  Southeast Asia", "  330,803 sq km" , " Kuala Lumpur", "Malay","malaysian ringgit"}; 
+    Country Country24 = {"Peru", "  South America", "  1.28 million sq km" , " Lima", "Spanish","peruvian nuevo sol"}; 
+    Country Country25 = {"Pakistan", " South Asia", "  881,913 sq km" , " Islamabad", "Urdu","Pakistani rupee"}; 
 
     //==============================================================================================//
     // INPUT OF COUNTRY BY USER
-    Country_info Country_info1 =  {};
-    Country_info Country_info2 =  {};
+    Country_info Country_info1 =  {};    // func at 2629 line
+    Country_info Country_info2 =  {};    //struct at 564 line
     Country_info Country_info3 =  {};
     Country_info Country_info4 =  {};
     Country_info Country_info5 =  {};
@@ -753,7 +937,7 @@ int main() {
     //=============================================================================================================================//
 
     while (true) {
-        printOptions(selectedOption);
+        printOptions(selectedOption);    // func declared at 7 line
 
         // Get arrow key input
         int key = _getch();
@@ -773,6 +957,7 @@ int main() {
       //===================================================================================================//              
                     case 1:
                         cout << "'Gross Domestic Product [GDP]'\n";
+       //=======================================================================================================                 
                         cout<<"_____________________________________________________________________________"<<endl;
                         cout<<"|1. Gross domestic product (GDP) is the standard measure of the value added  |"<<endl;
                         cout<<"|  created through the production of goods and services in a country during  |"<<endl;
@@ -784,7 +969,7 @@ int main() {
                         
                         
                         
-                        switch(country_name){
+                        switch(country_name){     //cin at 751 line
                             case 1:
                             cout<<"What Would you to do ??"<<endl;
                             cout<<"1. Press 'y' to Enter Data of choosen Country: "<<endl;
@@ -792,7 +977,7 @@ int main() {
                             cin>>y_n;
                             if(y_n=='y'){
                                 cout<<"Please Enter Basic Information about United States : "<<endl;
-                                input(Country_info1);
+                                input(Country_info1);  // func declared at 
                                 cout<<"---------------------------------------------------------------\n";
                                 cout<<"PLease Enter GDP of United States : "<<endl;
                                 input_GDP(gdp_info1);
@@ -830,6 +1015,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF United States Graphically\n";
+                            again1:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -845,6 +1031,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again1;
                                 }
                             }
                             
@@ -894,6 +1084,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Russia Graphically\n";
+                            again2:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -909,6 +1100,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again2;
                                 }
                             }
 
@@ -957,6 +1152,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF CHINA Graphically\n";
+                            again3:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -972,6 +1168,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again3;
                                 }
                             }
 
@@ -1020,6 +1220,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Canada Graphically\n";
+                            again4:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1035,6 +1236,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again4;
                                 }
                             }
 
@@ -1083,6 +1288,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Brazil Graphically\n";
+                            again5:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1098,6 +1304,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again5;
                                 }
                             }
 
@@ -1146,6 +1356,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Australia Graphically\n";
+                            again6:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1161,6 +1372,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again6;
                                 }
                             }
 
@@ -1209,6 +1424,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF India Graphically\n";
+                            again7:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1224,6 +1440,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again7;
                                 }
                             }
 
@@ -1272,6 +1492,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Argentina Graphically\n";
+                            again8:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1287,6 +1508,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again8;
                                 }
                             }
 
@@ -1335,6 +1560,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Kazakhstan Graphically\n";
+                            again9:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1350,6 +1576,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again9;
                                 }
                             }
 
@@ -1399,6 +1629,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Algeria Graphically\n";
+                            again10:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1414,6 +1645,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again10;
                                 }
                             }
                             break;  
@@ -1461,6 +1696,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Saudia-Arabia Graphically\n";
+                            again11:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1476,6 +1712,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again11;
                                 }
                             }
 
@@ -1524,6 +1764,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Mexico Graphically\n";
+                            again12:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1539,6 +1780,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again12;
                                 }
                             }
 
@@ -1587,6 +1832,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Indonesia Graphically\n";
+                            again13:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1602,6 +1848,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again13;
                                 }
                             }
 
@@ -1650,6 +1900,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF South-Africa Graphically\n";
+                            again14:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1665,6 +1916,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again14;
                                 }
                             }
 
@@ -1713,6 +1968,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Afghanistan Graphically\n";
+                            again15:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1728,6 +1984,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again15;
                                 }
                             }
 
@@ -1776,6 +2036,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Japan Graphically\n";
+                            again16:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1791,6 +2052,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again16;
                                 }
                             }
 
@@ -1839,6 +2104,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Thailand Graphically\n";
+                            again17:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1854,6 +2120,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again17;
                                 }
                             }
 
@@ -1902,6 +2172,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF sweden Graphically\n";
+                            again18:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1917,6 +2188,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again18;
                                 }
                             }
 
@@ -1965,6 +2240,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Turkey Graphically\n";
+                            again19:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -1980,6 +2256,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again19;
                                 }
                             }
 
@@ -2028,6 +2308,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Egypt Graphically\n";
+                            again20:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2043,6 +2324,9 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }else{
+                                    cout<<"Please try some other words\n";
+                                    goto again20;
                                 }
                             }
 
@@ -2091,6 +2375,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF South Korea Graphically\n";
+                            again21:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2106,6 +2391,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again21;
                                 }
                             }
 
@@ -2154,6 +2443,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Chile Graphically\n";
+                            again22:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2169,6 +2459,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again22;
                                 }
                             }
 
@@ -2217,6 +2511,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Malaysia Graphically\n";
+                            again23:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2232,6 +2527,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again23;
                                 }
                             }
 
@@ -2280,6 +2579,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Peru Graphically\n";
+                            again24:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2295,6 +2595,10 @@ int main() {
                                 feedback_formula(formula);
                                 
                                     
+                                }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again24;
                                 }
                             }
 
@@ -2343,6 +2647,7 @@ int main() {
                             cout<<"=====================================================================\n";
                             cout<<"            => How to Calculate the GDP OF a Country\n";
                             cout<<"            => GDP OF Pakistan Graphically\n";
+                            again25:
                             cout<<"=====================================================================\n";
                             cout<<"How can I help you : ";
                             cin>>argument;
@@ -2359,6 +2664,10 @@ int main() {
                                 
                                     
                                 }
+                                else{
+                                    cout<<"Please try some other words\n";
+                                    goto again25;
+                                }
                             }
 
                             break;  
@@ -2368,82 +2677,108 @@ int main() {
   //===================================================================================================//                      
                     case 2:
                         cout << "'Population'\n";
+   //====================================================================================================//                     
 
                         switch(country_name){
                             case 1:
-                            fileHandling("country1.txt");
+                            fileHandling("country1.txt");  // line 28-45
+                            feedback();
                             break;  
                             case 2:
                             fileHandling("country2.txt");
+                            feedback();
                             break;  
                             case 3:
                              fileHandling("country3.txt");
+                             feedback();
                             break;  
                             case 4:
                             fileHandling("country4.txt");
+                            feedback();
                             break;  
                             case 5:
                              fileHandling("country5.txt");
+                             feedback();
                             break;  
                             case 6:
                              fileHandling("country6.txt");
+                             feedback();
                             break;  
                             case 7:
                              fileHandling("country7.txt");
+                             feedback();
                             break;  
                             case 8:
                              fileHandling("country8.txt");
+                             feedback();
                             break;  
                             case 9:
                             fileHandling("country9.txt");
+                            feedback();
                             break;  
                             case 10:
                              fileHandling("country10.txt");
+                             feedback();
                             break;  
                             case 11:
                              fileHandling("country11.txt");
+                             feedback();
                             break;  
                             case 12:
                            fileHandling("country12.txt");
+                           feedback();
                             break;  
                             case 13:
                              fileHandling("country13.txt");
+                             feedback();
                             break;  
                             case 14:
                              fileHandling("country14.txt");
+                             feedback();
                             break;  
                             case 15:
                              fileHandling("country15.txt");
+                             feedback();
                             break;  
                             case 16:
                             fileHandling("country16.txt");
+                            feedback();
                             break;  
                             case 17:
                            fileHandling("country17.txt");
+                           feedback();
                             break;  
                             case 18:
                             fileHandling("country18.txt");
+                            feedback();
                             break;  
                             case 19:
                              fileHandling("country19.txt");
+                             feedback();
                             break;  
                             case 20:
                             fileHandling("country20.txt");
+                            feedback();
                             break;  
                             case 21:
                              fileHandling("country21.txt");
+                             feedback();
                             break;  
                             case 22:
                              fileHandling("country22.txt");
+                             feedback();
                             break;  
                             case 23:
                              fileHandling("country23.txt");
+                             feedback();
                             break;  
                             case 24:
                              fileHandling("country24.txt");
+                             feedback();
                             break;  
                             case 25:
                              fileHandling("country25.txt");
+                             feedback();
                             break;  
 
                         }
@@ -2458,78 +2793,103 @@ int main() {
                         switch(country_name){
                             case 1:
                             industry();
+                            feedback();
                             
                             
                             break;  
                             case 2:
                            industry();
+                           feedback();
                             break;  
                             case 3:
                             industry();
+                            feedback();
                             break;  
                             case 4:
                             industry();
+                            feedback();
                             case 5:
                            industry();
+                           feedback();
                             case 6:
                             industry();
+                            feedback();
                             break;  
                             case 7:
                            industry();
+                           feedback();
                             break;  
                             case 8:
                           industry();
+                          feedback();
                             break;  
                             case 9:
                           industry();
+                          feedback();
                             break;  
                             case 10:
                           industry();
+                          feedback();
                             break;  
                             case 11:
                         industry();
+                        feedback();
                             break;  
                             case 12:
                            industry();
+                           feedback();
                             break;  
                             case 13:
                           industry();
+                          feedback();
                             break;  
                             case 14:
                            industry();
+                           feedback();
                             break;  
                             case 15:
                             industry();
+                            feedback();
                             break;  
                             case 16:
                             industry();
+                            feedback();
                             break;  
                             case 17:
                            industry();
+                           feedback();
                             break;  
                             case 18:
                           industry();
+                          feedback();
                             break;  
                             case 19:
                             industry();
+                            feedback();
                             break;  
                             case 20:
                            industry();
+                           feedback();
                             break;  
                             case 21:
                           industry();
+                          feedback();
                             break;  
                             case 22:
                           industry();
+                          feedback();
                             break;  
                             case 23:
                            industry();
+                           feedback();
                             break;  
                             case 24:
                             industry();
+                            feedback();
                             break;  
                             case 25:
                             industry();
+                            feedback();
                             break;  
 
                         }
@@ -2553,13 +2913,13 @@ void input(Country_info &Country){
     // Input information for the country by user 
     cout << "Country Information:" << endl;
     cout<<"--------------------------------------"<<endl<<endl;
-    cout<<  "Name: " ;
+    cout<<  "Name:     " ;
     cin >> Country.name1 ;
     cout<<  "Location: "; 
     cin >> Country.location1 ;
-    cout<<  "Area: " ;
+    cout<<  "Area:     " ;
     cin >> Country.area1 ;
-    cout<<  "Capital: " ;
+    cout<<  "Capital:  " ;
     cin >> Country.capital1 ;
     cout<<  "Language: "; 
     cin >> Country.language1 ;
@@ -2570,14 +2930,14 @@ void input(Country_info &Country){
 }
 
 
-void input_GDP( GDP_info &gdp2){
+void input_GDP( GDP_info &gdp2){   // main at 654 line
     cout<<"===================================="<<endl;
     cout<<"GDP      => ";
     cin >> gdp2.GDP_value ;
     cout<<"GDP Rank => ";
     cin >> gdp2.GDP_growth ;
 }
-void output_GDP( GDP_info gdp2){
+void output_GDP( GDP_info gdp2){     // body at 626 line
     cout<<"===================================="<<endl;
     cout<<"GDP      => ";
     cout <<gdp2.GDP_value <<endl;
@@ -2585,31 +2945,31 @@ void output_GDP( GDP_info gdp2){
     cout<< gdp2.GDP_growth << endl;
 }
 //==============================================================
-void display(Country Country1){
+void display(Country Country1){    // main at 682 line
     // Display information for the country
     cout << "Country Information:" << endl;
     cout<<"--------------------------------------"<<endl<<endl;
-    cout << "Name: " << Country1.name << endl;
+    cout << "Name:     " << Country1.name << endl;
     cout << "Location: " << Country1.location << endl;
-    cout << "Area: " << Country1.area << endl;
-    cout << "Capital: " << Country1.capital << endl;
+    cout << "Area:     " << Country1.area << endl;
+    cout << "Capital:  " << Country1.capital << endl;
     cout << "Language: " << Country1.language << endl;
     cout<<  "Currency: "<< Country1.currency<<endl;
     
 
 }
 //================================================================
-void output(Country_info Country){
+void output(Country_info Country){    // main at 710 line
     // output information for the country by user entered
     cout << "Country Information:" << endl;
     cout<<"--------------------------------------"<<endl<<endl;
-    cout<<  "Name: " ;
+    cout<<  "Name:     " ;
     cout<< Country.name1<<endl ;
     cout<<  "Location: "; 
     cout<< Country.location1<<endl ;
-    cout<<  "Area: " ;
+    cout<<  "Area:     " ;
     cout<< Country.area1<<endl ;
-    cout<<  "Capital: " ;
+    cout<<  "Capital:  " ;
     cout<< Country.capital1<<endl ;
     cout<<  "Language: "; 
     cout<< Country.language1<<endl ;
@@ -2618,7 +2978,7 @@ void output(Country_info Country){
     
 
 }
-//==============================================================
+//==============================================================       
 void display_GDP( GDP gdp){
     cout<<"===================================="<<endl;
     cout<<"GDP      => "<<gdp.GDP_value <<endl;
